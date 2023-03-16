@@ -1,12 +1,11 @@
 {
-    "heading": "Charged Up - 2023",
-    "forceQualifiers": true,
+    "heading": "2023 MLL Evaluations",
     "pages": [
         {
-            "name": "Setup",
+            "name": "Select",
             "widgets": [
                 {
-                    "name": "Scouter Name",
+                    "name": "Coach Name",
                     "type": "text",
                     "validation": {
                         "comparison": "greater",
