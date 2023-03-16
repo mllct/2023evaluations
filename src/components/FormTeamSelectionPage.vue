@@ -1,14 +1,14 @@
 <template>
-  <FormPage title="Team Selection" ref="page">
-    <FormGroup :label-type="LabelType.LabelTag" id="select-type-input" name="Selection Type">
+  <FormPage title="Player Selection" ref="page">
+    <FormGroup :label-type="LabelType.LabelTag" id="select-type-input" name="Division">
       <select id="select-type-input" v-model.number="selectType">
-        <option value="0">The Blue Alliance</option>
-        <option value="1">Manual</option>
+        <option value="0">Baseball</option>
+        <option value="1">Softball</option>
       </select>
     </FormGroup>
-    <FormGroup :show="isTBA" :label-type="LabelType.LabelTag" id="event-key-input" name="Event Key">
-      <input id="event-key-input" type="text" v-model="eventKey" @keyup.enter="loadTBAData" />
-      <button @click="loadTBAData">Load</button>
+    <FormGroup :show="isBB" :label-type="LabelType.LabelTag" id="division-key-input" name="Division (M,F,CP)">
+      <input id="division-key-input" type="text" v-model="divisionKey" @keyup.enter="loadPlayers" />
+      <button @click="loadPlayers">Load</button>
     </FormGroup>
     <FormGroup :show="isTBA" :label-type="LabelType.PlainText" name="Teams Loaded">{{ teamsLoadStatus }}</FormGroup>
     <FormGroup :show="isTBA" :label-type="LabelType.PlainText" name="Matches Loaded">{{ matchesLoadStatus }}</FormGroup>
@@ -80,7 +80,8 @@ let matchesLoadStatus = $ref("");
 const teams = $ref<unknown[]>();
 const matches = $ref<unknown[]>();
 
-const isTBA = $computed(() => selectType === 0);
+const isBB = $computed(() => selectType === 0);
+const isSB = $computed(() => selectType === 1);
 
 // The match data based on the selected level and number
 const currentMatch = $computed(() => {
